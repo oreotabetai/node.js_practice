@@ -10,11 +10,12 @@ function start(route, handle) {
         console.log("Request for " + pathname + " received");
 
         // ルータ
-        route(handle, pathname);
+        route(handle, pathname, response);
 
-        response.writeHead(200, { "Content-Type": "text/plain" });
-        response.write("Hello World");
-        response.end();
+        // ブロッキングへの対応
+        // response.writeHead(200, { "Content-Type": "text/plain" });
+        // response.write("Hello World");
+        // response.end();
     }
 
     http.createServer(onRequest).listen(8000);
